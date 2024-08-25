@@ -2,6 +2,7 @@ class Horse:
     def __init__(self):
         self.x_distance = 0
         self.sound = 'Frrr'
+        super().__init__()
 
     def run(self, dx):
         self.x_distance += dx
@@ -19,18 +20,20 @@ class Eagle:
 class Pegasus(Horse, Eagle):
     def __init__(self):
         super().__init__()
+        super().__init__()  # Вызываем конструкторы родителей по порядку наследования
 
     def move(self, dx, dy):
         self.run(dx)
         self.fly(dy)
 
     def get_pos(self):
-        return self.x_distance, self.y_distance
+        return (self.x_distance, self.y_distance)
 
     def voice(self):
         print(self.sound)
 
 
+# Пример использования:
 p1 = Pegasus()
 
 print(p1.get_pos())
